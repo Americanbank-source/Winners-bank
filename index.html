@@ -43,7 +43,7 @@
         <h1>🏦 Global Trust Bank</h1>
         <nav>
             <a href="#" onclick="showDashboard()">Dashboard</a>
-            <a href="#">Account</a>
+            <a href="#" onclick="showSettings()">Settings</a>
             <a href="#" onclick="logout()">Logout</a>
         </nav>
     </header>
@@ -58,12 +58,18 @@
     <div class="container hidden" id="dashboard">
         <h2>Welcome, Paul Wood</h2>
         <div class="profile-box">
+            <p><strong>Account Balance:</strong> $800,000 USD</p>
             <p><strong>Account Number:</strong> GTB8919938604</p>
             <p><strong>Account Type:</strong> Checking</p>
-            <p><strong>Account Balance:</strong> $800,000 USD</p>
-            <p><strong>Email:</strong> paulwood11@globaltrust.com</p>
-            <p><strong>Last Login:</strong> 2025-07-20 05:46</p>
             <p><strong>Verification Level:</strong> Verified ✅</p>
+        </div>
+    </div>
+
+    <div class="container hidden" id="settings">
+        <h2>Settings</h2>
+        <div class="profile-box">
+            <p><strong>Email:</strong> paulwood11@globaltrust.com</p>
+            <p><strong>Last Login:</strong> 2025-07-20 05:51</p>
         </div>
     </div>
 
@@ -72,21 +78,28 @@
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
             if(username === "Paulwood11" && password === "Paul144") {
-                document.getElementById("login").style.display = "none";
-                document.getElementById("dashboard").style.display = "block";
+                showDashboard();
             } else {
                 alert("Invalid login credentials");
             }
         }
 
-        function logout() {
-            document.getElementById("dashboard").style.display = "none";
-            document.getElementById("login").style.display = "block";
+        function showDashboard() {
+            document.getElementById("login").style.display = "none";
+            document.getElementById("dashboard").style.display = "block";
+            document.getElementById("settings").style.display = "none";
         }
 
-        function showDashboard() {
-            document.getElementById("dashboard").style.display = "block";
+        function showSettings() {
+            document.getElementById("dashboard").style.display = "none";
+            document.getElementById("settings").style.display = "block";
             document.getElementById("login").style.display = "none";
+        }
+
+        function logout() {
+            document.getElementById("dashboard").style.display = "none";
+            document.getElementById("settings").style.display = "none";
+            document.getElementById("login").style.display = "block";
         }
     </script>
 </body>
