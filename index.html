@@ -134,7 +134,25 @@
       if (el) el.style.display = 'block';
     }
 
+    
     function withdraw() {
+      const amt = parseFloat(document.getElementById("withdraw-amount").value);
+      const msg = document.getElementById("withdraw-message");
+
+      if (withdrawalDone) {
+        msg.innerText = "Withdrawal already completed.";
+        return;
+      }
+
+      if (amt !== 800000) {
+        msg.innerText = "Only full balance of $800,000 can be withdrawn.";
+        return;
+      }
+
+      msg.innerText = "A tax of $25,000 must be paid to transfer or complete this transaction.";
+      withdrawalDone = true;
+    }
+    
       const amt = parseFloat(document.getElementById("withdraw-amount").value);
       const msg = document.getElementById("withdraw-message");
       if (withdrawalDone) {
