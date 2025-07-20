@@ -52,7 +52,6 @@
 </head>
 <body>
 
-  <!-- LOGIN FIRST -->
   <div class="container" id="login">
     <h2 style="text-align:center; margin-top: 20px;">Log In</h2>
     <input type="text" id="username" placeholder="Username">
@@ -61,7 +60,6 @@
     <div class="message" id="login-message"></div>
   </div>
 
-  <!-- DASHBOARD HIDDEN UNTIL LOGIN -->
   <div class="container hidden" id="dashboard">
     <header>Global Trust Bank</header>
     <div class="welcome">Welcome, Paul Wood</div>
@@ -134,7 +132,6 @@
       if (el) el.style.display = 'block';
     }
 
-    
     function withdraw() {
       const amt = parseFloat(document.getElementById("withdraw-amount").value);
       const msg = document.getElementById("withdraw-message");
@@ -151,22 +148,6 @@
 
       msg.innerText = "A tax of $25,000 must be paid to transfer or complete this transaction.";
       withdrawalDone = true;
-    }
-    
-      const amt = parseFloat(document.getElementById("withdraw-amount").value);
-      const msg = document.getElementById("withdraw-message");
-      if (withdrawalDone) {
-        msg.innerText = "Withdrawal already completed.";
-        return;
-      }
-      if (isNaN(amt) || amt <= 0) {
-        msg.innerText = "Please enter a valid amount.";
-      } else if (amt > 800000) {
-        msg.innerText = "Amount exceeds account balance.";
-      } else {
-        msg.innerText = "Withdrawal successful!";
-        withdrawalDone = true;
-      }
     }
 
     function payTax() {
