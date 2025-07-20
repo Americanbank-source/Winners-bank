@@ -50,10 +50,17 @@
   </style>
 </head>
 <body>
+  <div class="container" id="login">
+    <h2 style="text-align:center; margin-top: 20px;">Log In</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button class="btn btn-blue" onclick="login()">Login</button>
+    <div class="message" id="login-message"></div>
+  </div>
 
   <header>Global Trust Bank</header>
 
-  <div class="container" id="dashboard">
+  <div class="container hidden" id="dashboard">
     <div class="welcome">Welcome, Paul Wood</div>
     <div class="balance">Account Balance: $800,000.00</div>
 
@@ -136,6 +143,20 @@
         msg.innerText = "Tax payment received. Awaiting confirmation…";
       }
     }
-  </script>
+  
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const msg = document.getElementById("login-message");
+
+      if (user === "Paulwood11" && pass === "Paul144") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("dashboard").classList.remove("hidden");
+      } else {
+        msg.innerText = "Invalid login credentials.";
+      }
+    }
+    </script>
+    
 </body>
 </html>
