@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Global Trust Bank</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     html { font-size: 14px; }
     body { margin: 0; font-family: Arial, sans-serif; background: #fff; }
@@ -20,6 +20,7 @@
       margin: auto;
       padding: 20px;
     }
+    .hidden { display: none; }
     .welcome { font-size: 15px; text-align: center; margin-bottom: 10px; }
     .balance { font-size: 18px; color: green; text-align: center; font-weight: bold; margin-bottom: 30px; }
     .btn {
@@ -50,6 +51,8 @@
   </style>
 </head>
 <body>
+
+  <!-- LOGIN FIRST -->
   <div class="container" id="login">
     <h2 style="text-align:center; margin-top: 20px;">Log In</h2>
     <input type="text" id="username" placeholder="Username">
@@ -58,9 +61,9 @@
     <div class="message" id="login-message"></div>
   </div>
 
-  <header>Global Trust Bank</header>
-
+  <!-- DASHBOARD HIDDEN UNTIL LOGIN -->
   <div class="container hidden" id="dashboard">
+    <header>Global Trust Bank</header>
     <div class="welcome">Welcome, Paul Wood</div>
     <div class="balance">Account Balance: $800,000.00</div>
 
@@ -110,6 +113,20 @@
   <script>
     let withdrawalDone = false;
 
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const msg = document.getElementById("login-message");
+
+      if (user === "Paulwood11" && pass === "Paul144") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("dashboard").classList.remove("hidden");
+        window.scrollTo(0, 0);
+      } else {
+        msg.innerText = "Invalid login credentials.";
+      }
+    }
+
     function toggleForm(id) {
       const boxes = document.querySelectorAll('.form-box, .support-box');
       boxes.forEach(box => box.style.display = 'none');
@@ -143,20 +160,6 @@
         msg.innerText = "Tax payment received. Awaiting confirmation…";
       }
     }
-  
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      const msg = document.getElementById("login-message");
-
-      if (user === "Paulwood11" && pass === "Paul144") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("dashboard").classList.remove("hidden");
-      } else {
-        msg.innerText = "Invalid login credentials.";
-      }
-    }
-    </script>
-    
+  </script>
 </body>
 </html>
