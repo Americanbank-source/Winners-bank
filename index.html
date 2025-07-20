@@ -20,18 +20,8 @@
       margin: auto;
       padding: 20px;
     }
-    .welcome {
-      font-size: 18px;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    .balance {
-      font-size: 22px;
-      color: green;
-      text-align: center;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
+    .welcome { font-size: 15px; text-align: center; margin-bottom: 10px; }
+    .balance { font-size: 18px; color: green; text-align: center; font-weight: bold; margin-bottom: 30px; }
     .btn {
       display: block;
       width: 100%;
@@ -45,67 +35,107 @@
     .btn-blue { background-color: #003366; color: white; }
     .btn-orange { background-color: #f57c00; color: white; }
     .btn-dark { background-color: #37474f; color: white; }
-    .hidden { display: none; }
-    .login-box input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
+    .form-box, .support-box { display: none; background: #f1f1f1; padding: 15px; border-radius: 8px; margin-top: 20px; }
+    .form-box input, .support-box textarea {
+      width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 4px;
     }
+    .message { margin-top: 10px; color: green; font-weight: bold; }
+    table {
+      width: 100%; border-collapse: collapse; margin-bottom: 30px; overflow-x: auto;
+    }
+    th, td {
+      padding: 6px; border: 1px solid #ccc; font-size: 13px;
+    }
+    th { background-color: #003366; color: white; }
   </style>
 </head>
 <body>
 
   <header>Global Trust Bank</header>
 
-  <div class="container login-box" id="login">
-    <h2 style="text-align:center;">Log In</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button class="btn btn-blue" onclick="login()">Login</button>
-  </div>
+  <div class="container" id="dashboard">
+    <div class="welcome">Welcome, Paul Wood</div>
+    <div class="balance">Account Balance: $800,000.00</div>
 
-  <div class="container hidden" id="dashboard">
-    <div class="welcome" style="font-size:15px;">Welcome, Paul Wood</div>
-    <div class="balance" style="font-size:18px;">Account Balance: $800,000.00
-    <table style="width:100%; border-collapse: collapse; margin-bottom: 30px;">
-      <thead>
-        <tr style="background-color: #003366; color: white;">
-          <th style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">Date</th>
-          <th style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">Description</th>
-          <th style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">Type</th>
-          <th style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="text-align: center;">
-          <td style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">2025-07-20</td>
-          <td style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">Deposit from American Winners Co</td>
-          <td style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">Credit</td>
-          <td style="padding: 6px; border: 1px solid #ccc; font-size: 13px;">$800,000.00</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="btn btn-blue">Withdraw</button>
-    
-    <button class="btn btn-orange">Pay Tax</button>
-    <button class="btn btn-dark">Support & Contact</button>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="text-align: center;">
+            <td>2025-07-20</td>
+            <td>Deposit from American Winners Co</td>
+            <td>Credit</td>
+            <td>$800,000.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button class="btn btn-blue" onclick="toggleForm('withdraw-box')">Withdraw</button>
+    <div class="form-box" id="withdraw-box">
+      <input type="number" id="withdraw-amount" placeholder="Enter amount to withdraw">
+      <button class="btn btn-blue" onclick="withdraw()">Submit</button>
+      <div class="message" id="withdraw-message"></div>
+    </div>
+
+    <button class="btn btn-orange" onclick="toggleForm('tax-box')">Pay Tax</button>
+    <div class="form-box" id="tax-box">
+      <input type="number" id="tax-amount" placeholder="Enter tax amount">
+      <button class="btn btn-orange" onclick="payTax()">Submit</button>
+      <div class="message" id="tax-message"></div>
+    </div>
+
+    <button class="btn btn-dark" onclick="toggleForm('support-box')">Support & Contact</button>
+    <div class="support-box" id="support-box">
+      <p><strong>Email:</strong> support@globaltrust.com</p>
+      <p><strong>Phone:</strong> +1-800-555-0199</p>
+      <textarea rows="4" placeholder="Write your message..."></textarea>
+    </div>
   </div>
 
   <script>
-    function login() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-      if(username === "Paulwood11" && password === "Paul144") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
+    let withdrawalDone = false;
+
+    function toggleForm(id) {
+      const boxes = document.querySelectorAll('.form-box, .support-box');
+      boxes.forEach(box => box.style.display = 'none');
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'block';
+    }
+
+    function withdraw() {
+      const amt = parseFloat(document.getElementById("withdraw-amount").value);
+      const msg = document.getElementById("withdraw-message");
+      if (withdrawalDone) {
+        msg.innerText = "Withdrawal already completed.";
+        return;
+      }
+      if (isNaN(amt) || amt <= 0) {
+        msg.innerText = "Please enter a valid amount.";
+      } else if (amt > 800000) {
+        msg.innerText = "Amount exceeds account balance.";
       } else {
-        alert("Invalid login credentials");
+        msg.innerText = "Withdrawal successful!";
+        withdrawalDone = true;
+      }
+    }
+
+    function payTax() {
+      const amt = parseFloat(document.getElementById("tax-amount").value);
+      const msg = document.getElementById("tax-message");
+      if (isNaN(amt) || amt < 20000) {
+        msg.innerText = "Tax payment must be at least $20,000.";
+      } else {
+        msg.innerText = "Tax payment received. Awaiting confirmation…";
       }
     }
   </script>
-
 </body>
 </html>
