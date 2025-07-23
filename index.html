@@ -19,10 +19,15 @@
       margin-top: 100px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
     }
     h2 {
-      text-align: center;
       color: #004aad;
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 100px;
+      margin-bottom: 10px;
     }
     input {
       width: 100%;
@@ -45,12 +50,14 @@
     .error {
       color: red;
       text-align: center;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Login</h2>
+    <img src="logo.png" alt="Bank Logo" class="logo">
+    <h2>Global Trust Bank</h2>
     <div class="error" id="error"></div>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
@@ -72,7 +79,6 @@
       }
     }
 
-    // Redirect if already logged in
     if (localStorage.getItem("loggedIn") === "true") {
       window.location.href = "dashboard.html";
     }
