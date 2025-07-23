@@ -2,39 +2,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-        img {
-            max-width: 90%;
-            margin: 20px 0;
-            border: 1px solid #ccc;
-        }
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>My Profile - Global Trust Bank</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .profile {
+      text-align: center;
+      padding: 20px;
+    }
+    .profile img {
+      width: 120px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .info {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    #bankcard {
+      display: none;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <h2>My Profile</h2>
-    <img src="profile.jpeg" alt="Profile Photo" class="profile-pic">
-    <p><strong>Full Name:</strong> Paul Allen Wood</p>
-    <p><strong>Account Number:</strong> 82338962</p>
-    <p><strong>Email:</strong> portercows1950@gmail.com</p>
+  <div class="profile">
+    <img src="profile.jpeg" alt="Profile Picture">
+    <div class="info">
+      <p><strong>Full Name:</strong> Paul Allen Wood</p>
+      <p><strong>Account Number:</strong> 82338962</p>
+      <p><strong>Email:</strong> portercows1950@gmail.com</p>
+    </div>
 
-    <h3>Driver's License</h3>
-    <img src="license.jpeg" alt="Driver's License">
+    <div class="section">
+      <h3>Driver's License</h3>
+      <img src="license.jpeg" alt="Driver License" style="width: 80%; max-width: 300px;">
+    </div>
 
-    <h3>Bank Card</h3>
-    <img src="bankcard.jpeg" alt="Bank Card">
+    <div class="section">
+      <h3>Bank Card</h3>
+      <button onclick="document.getElementById('bankcard').style.display='block'">View Bank Card</button>
+      <div id="bankcard">
+        <img src="bankcard.jpeg" alt="Bank Card" style="width: 80%; max-width: 300px;">
+      </div>
+    </div>
+  </div>
 </body>
 </html>
