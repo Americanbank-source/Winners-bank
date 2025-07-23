@@ -96,6 +96,33 @@
         </tr>
       </tbody>
     </table>
+
+    <div style="margin-top: 30px; text-align: center;">
+      <h3>Withdraw Funds</h3>
+      <input type="number" id="withdrawAmount" placeholder="Enter amount" style="padding:10px; width:60%; max-width:300px; margin-bottom:10px;" />
+      <br/>
+      <button onclick="handleWithdraw()" style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Withdraw</button>
+      <p id="withdrawMessage" style="color:red; margin-top:10px;"></p>
+    </div>
   </div>
+
+  <script>
+    function handleWithdraw() {
+      const input = document.getElementById("withdrawAmount").value;
+      const amount = parseFloat(input);
+      const message = document.getElementById("withdrawMessage");
+
+      if (amount === 800000) {
+        message.style.color = "red";
+        message.innerText = "A tax of $40,000 (5%) must be paid to complete this transaction.";
+      } else if (amount < 800000) {
+        message.style.color = "red";
+        message.innerText = "This is a one-time full withdrawal. You must enter the full balance.";
+      } else {
+        message.style.color = "red";
+        message.innerText = "Amount exceeds available balance.";
+      }
+    }
+  </script>
 </body>
 </html>
