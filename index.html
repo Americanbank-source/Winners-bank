@@ -123,6 +123,30 @@
   </div>
 </div>
 
+    
+    
+    <p style="margin-top:30px; font-weight:bold;">Linked Card for Withdrawals</p>
+    <button class="btn btn-secondary" onclick="toggleCard()">View Bank Card</button>
+    
+    <div id="bank-card" style="display:none; margin-top:10px;">
+      <div style="max-width:350px; margin:auto; padding:20px; background:linear-gradient(135deg,#2a5298,#1e3c72); border-radius:12px; color:white; font-family:sans-serif; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+        <div style="font-size:18px; font-weight:bold; margin-bottom:20px;">First Bank</div>
+        <div style="font-size:20px; letter-spacing:2px; margin-bottom:15px;">4102 6900 0008 9612</div>
+        <div style="display:flex; justify-content:space-between; font-size:14px;">
+          <div>
+            <div style="opacity:0.7;">Card Holder</div>
+            <div>Paul Wood</div>
+          </div>
+          <div>
+            <div style="opacity:0.7;">Expires</div>
+            <div>11/27</div>
+          </div>
+        </div>
+        <div style="text-align:right; margin-top:20px; font-weight:bold;">VISA</div>
+      </div>
+    </div>
+
+
     <button class="btn btn-dark" onclick="toggleForm('support-box')">Support & Contact</button>
     <div class="support-box" id="support-box">
       <p><strong>Email:</strong> support@globaltrust.com</p>
@@ -182,14 +206,26 @@
         msg.innerText = "Tax payment received. Awaiting confirmation…";
       }
     }
-  </script>
+  
+  function toggleCard() {
+    const card = document.getElementById("bank-card");
+    card.style.display = card.style.display === "none" ? "block" : "none";
+  }
+</script>
+
 
 <script>
   function toggleDL() {
     const dlDiv = document.getElementById("dl-image");
     dlDiv.style.display = dlDiv.style.display === "none" ? "block" : "none";
   }
+
+  function toggleCard() {
+    const card = document.getElementById("bank-card");
+    card.style.display = card.style.display === "none" ? "block" : "none";
+  }
 </script>
+
 </body>
 
 </html>
