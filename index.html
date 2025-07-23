@@ -8,142 +8,71 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
       margin: 0;
-      padding: 0;
+      background-color: #f1f1f1;
+    }
+    header {
+      background-color: #007bff;
+      padding: 15px;
+      color: white;
+      text-align: center;
+      font-size: 22px;
     }
     .container {
-      max-width: 500px;
-      margin: 40px auto;
-      background: #fff;
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
       padding: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    h2, h3 {
-      text-align: center;
+    .welcome {
+      font-size: 18px;
+      margin-bottom: 10px;
     }
-    input, button {
+    .balance {
+      font-size: 24px;
+      color: green;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    table {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border-collapse: collapse;
+      margin-top: 20px;
     }
-    button {
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
       background-color: #007bff;
       color: white;
-      font-weight: bold;
-      border: none;
-    }
-    .hidden {
-      display: none;
-    }
-    .profile-img {
-      display: block;
-      margin: 10px auto;
-      max-width: 150px;
-      width: 100%;
-      border-radius: 8px;
-      border: 2px solid #ccc;
-    }
-    .card-box {
-      background: linear-gradient(135deg, #2a5298, #1e3c72);
-      color: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 15px;
     }
   </style>
 </head>
 <body>
-  <div id="loginPage" class="container">
-    <h2>Login to Global Trust Bank</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <p id="loginMessage" style="color: red;"></p>
+  <header>Global Trust Bank</header>
+  <div class="container">
+    <div class="welcome">Welcome, Paul Wood</div>
+    <div class="balance">$800,000.00</div>
+
+    <h3>Transaction History</h3>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Amount</th>
+      </tr>
+      <tr>
+        <td>2025-07-20</td>
+        <td>Deposit from American Winners Co</td>
+        <td>Credit</td>
+        <td>$800,000.00</td>
+      </tr>
+    </table>
   </div>
-
-  <div id="dashboardPage" class="container hidden">
-    <h2>Account Dashboard</h2>
-    <p><strong>Balance:</strong> $800,000</p>
-
-    <h3>Recent Transaction</h3>
-    <ul>
-      <li>Deposit from American Winners Co — $800,000</li>
-    </ul>
-
-    <h3>Withdraw Funds</h3>
-    <input type="number" id="withdrawAmount" placeholder="Enter amount to withdraw">
-    <button onclick="handleWithdraw()">Withdraw</button>
-    <p id="withdrawMessage"></p>
-
-    <h3>My Profile</h3>
-    <p><strong>Name:</strong> Paul Wood</p>
-    <p><strong>Email:</strong> portercows1950@gmail.com</p>
-    <p><strong>Account Number:</strong> 82338962</p>
-    <img src="profile.jpg" alt="Profile Photo" class="profile-img">
-
-    <button onclick="toggleDL()">View Driver License</button>
-    <div id="dl-image" style="display:none;">
-      <img src="license_updated.jpg" alt="Driver License" class="profile-img">
-    </div>
-
-    <p style="margin-top: 30px; font-weight: bold;">Linked Card for Withdrawals</p>
-    <button onclick="toggleCard()">View Bank Card</button>
-    <div id="bank-card" style="display:none;">
-      <div class="card-box">
-        <div style="font-size:18px; font-weight:bold; margin-bottom:20px;">First Bank</div>
-        <div style="font-size:20px; letter-spacing:2px; margin-bottom:15px;">4102 6900 0008 9612</div>
-        <div style="display:flex; justify-content:space-between; font-size:14px;">
-          <div>
-            <div style="opacity:0.7;">Card Holder</div>
-            <div>Paul Wood</div>
-          </div>
-          <div>
-            <div style="opacity:0.7;">Expires</div>
-            <div>11/27</div>
-          </div>
-        </div>
-        <div style="text-align:right; margin-top:20px; font-weight:bold;">VISA</div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      if (user === "Paulwood11" && pass === "Paul144") {
-        document.getElementById("loginPage").classList.add("hidden");
-        document.getElementById("dashboardPage").classList.remove("hidden");
-      } else {
-        document.getElementById("loginMessage").innerText = "Invalid login credentials.";
-      }
-    }
-
-    function toggleDL() {
-      const dlDiv = document.getElementById("dl-image");
-      dlDiv.style.display = dlDiv.style.display === "none" ? "block" : "none";
-    }
-
-    function toggleCard() {
-      const card = document.getElementById("bank-card");
-      card.style.display = card.style.display === "none" ? "block" : "none";
-    }
-
-    function handleWithdraw() {
-      const amount = parseFloat(document.getElementById("withdrawAmount").value);
-      const message = document.getElementById("withdrawMessage");
-      if (amount === 800000) {
-        message.innerHTML = "<span style='color: orange;'>A tax amount of $40,000, which is 5% of the current balance, must be paid to complete this transaction.</span>";
-      } else if (amount < 800000) {
-        message.innerHTML = "<span style='color: red;'>One-time withdrawal of the full balance ($800,000) is required.</span>";
-      } else {
-        message.innerHTML = "<span style='color: red;'>Invalid amount. Maximum allowed is $800,000.</span>";
-      }
-    }
-  </script>
 </body>
 </html>
