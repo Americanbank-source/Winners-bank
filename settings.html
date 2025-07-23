@@ -72,9 +72,18 @@
     <div class="back">
       <a href="dashboard.html">Back to Dashboard</a>
     </div>
+    <div class="back">
+      <a href="index.html" onclick="logout()" style="background-color:#c0392b;">Logout</a>
+    </div>
   </div>
 
   <script>
+    function logout() {
+      // Clear session data if needed
+      localStorage.removeItem('loggedIn');
+      window.location.href = "index.html";
+    }
+
     const lastLogin = localStorage.getItem('lastLoginTime');
     document.getElementById('lastLogin').textContent = lastLogin || "No login recorded";
   </script>
