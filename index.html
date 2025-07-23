@@ -115,8 +115,11 @@
       <p><strong>Last Login:</strong> 2025-07-23 03:52</p>
     
   <div style="margin-top: 20px;">
-    <h4 style="text-align:center;">Driver License</h4>
-    <img src="license.jpg" alt="Driver License" style="width:100%; max-width:350px; display:block; margin:auto; border:2px solid #ccc; border-radius:8px;">
+    
+    <button class="btn btn-secondary" onclick="toggleDL()">View Driver License</button>
+    <div id="dl-image" style="display:none; margin-top:10px;">
+      <h4 style="text-align:center;">Driver License</h4>
+      <img src="license.jpg" alt="Driver License" style="width:100%; max-width:350px; display:block; margin:auto; border:2px solid #ccc; border-radius:8px;">
   </div>
 </div>
 
@@ -180,5 +183,13 @@
       }
     }
   </script>
+
+<script>
+  function toggleDL() {
+    const dlDiv = document.getElementById("dl-image");
+    dlDiv.style.display = dlDiv.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
+
 </html>
