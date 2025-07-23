@@ -27,7 +27,7 @@
     .section {
       margin-top: 30px;
     }
-    #bankcard {
+    #bankcard, #licensecard {
       display: none;
       margin-top: 20px;
     }
@@ -50,7 +50,10 @@
 
     <div class="section">
       <h3>Driver's License</h3>
-      <img src="license.jpeg" alt="Driver License" style="width: 80%; max-width: 300px;">
+      <button onclick="document.getElementById('licensecard').style.display='block'">View License</button>
+      <div id="licensecard">
+        <img src="license.jpeg" alt="Mock License" style="width: 80%; max-width: 300px;">
+      </div>
     </div>
 
     <div class="section">
