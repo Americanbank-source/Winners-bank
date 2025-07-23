@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Global Trust Bank</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Trust Bank</title>
+<style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
@@ -73,40 +74,38 @@
   </style>
 </head>
 <body>
-  <header>Global Trust Bank</header>
-  <div class="container">
-    <div class="welcome">Welcome, Paul Wood</div>
-    <div class="balance">Account Balance: $800,000.00</div>
-    <div class="history-title">Transaction History</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Type</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2025-07-20</td>
-          <td>Deposit from American Winners Co</td>
-          <td>Credit</td>
-          <td>$800,000.00</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div style="margin-top: 30px; text-align: center;">
-      <h3>Withdraw Funds</h3>
-      <input type="number" id="withdrawAmount" placeholder="Enter amount" style="padding:10px; width:60%; max-width:300px; margin-bottom:10px;" />
-      <br/>
-      <button onclick="handleWithdraw()" style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Withdraw</button>
-      <p id="withdrawMessage" style="color:red; margin-top:10px;"></p>
-    </div>
-  </div>
-
-  <script>
+<header>Global Trust Bank</header>
+<div class="container">
+<div class="welcome">Welcome, Paul Wood</div>
+<div class="balance">Account Balance: $800,000.00</div>
+<div class="history-title">Transaction History</div>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Description</th>
+<th>Type</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-07-23</td>
+<td>Deposit from American Winners Co</td>
+<td>Credit</td>
+<td>$800,000.00</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 30px; text-align: center;">
+<h3>Withdraw Funds</h3>
+<input id="withdrawAmount" placeholder="Enter amount" style="padding:10px; width:60%; max-width:300px; margin-bottom:10px;" type="number"/>
+<br/>
+<button onclick="handleWithdraw()" style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Withdraw</button>
+<p id="withdrawMessage" style="color:red; margin-top:10px;"></p>
+</div>
+</div>
+<script>
     function handleWithdraw() {
       const input = document.getElementById("withdrawAmount").value;
       const amount = parseFloat(input);
@@ -124,24 +123,23 @@
       }
     }
   </script>
-
-  <div class="container" style="text-align: center; margin-top: 40px;">
-    <h3>Contact & Support</h3>
-    <button onclick="document.getElementById('contactDetails').style.display='block'" style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Show Contact Info</button>
-    <div id="contactDetails" style="display:none; margin-top:15px;">
-      <p>📧 Email: <a href="mailto:americanwinners45@gmail.com">americanwinners45@gmail.com</a></p>
-      <p>📞 Phone: 9313777510</p>
-    </div>
-    <div style="text-align: center; margin: 40px 0;">
-      <a href="profile.html" style="text-decoration: none;">
-        <button style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">My Profile</button>
-      </a>
-    </div>
-    <div style="text-align: center; margin: 20px 0;">
-      <a href="settings.html" style="text-decoration: none;">
-        <button style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Settings</button>
-      </a>
-    </div>
-  </div>
+<div class="container" style="text-align: center; margin-top: 40px;">
+<h3>Contact &amp; Support</h3>
+<button onclick="document.getElementById('contactDetails').style.display='block'" style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Show Contact Info</button>
+<div id="contactDetails" style="display:none; margin-top:15px;">
+<p>📧 Email: <a href="mailto:americanwinners45@gmail.com">americanwinners45@gmail.com</a></p>
+<p>📞 Phone: 9313777510</p>
+</div>
+<div style="text-align: center; margin: 40px 0;">
+<a href="profile.html" style="text-decoration: none;">
+<button style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">My Profile</button>
+</a>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<a href="settings.html" style="text-decoration: none;">
+<button style="padding:10px 20px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Settings</button>
+</a>
+</div>
+</div>
 </body>
 </html>
